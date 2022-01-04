@@ -10,8 +10,18 @@ import java.util.List;
 @Component
 public class PlanetsService {
 
+
     public long getPlanetsDistance(Planet planet1, Planet planet2) {
         return Math.abs(planet1.getDistance() - planet2.getDistance());
+
+    public void getMaximumPlanetDistance(Planet planet1, Planet planet2) {
+        System.out.println("Максимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
+                + new DecimalFormat( "#,###" ).format(Math.abs(planet1.getDistance() + planet2.getDistance())) + " км.");
+    }
+
+   
+
+
     }
 
 
