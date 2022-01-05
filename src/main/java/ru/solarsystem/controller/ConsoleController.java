@@ -3,9 +3,11 @@ package ru.solarsystem.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import ru.solarsystem.model.planets.Planet;
+import ru.solarsystem.model.satellite.Satellite;
 import ru.solarsystem.service.PlanetsService;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 /**
  * Контроллер, который выводит информацию в консоль
@@ -21,9 +23,36 @@ public class ConsoleController {
     }
 
 
-    public void printDistanceBetween(Planet planet1, Planet planet2) {
-        final long distance = planetsService.getPlanetsDistance(planet1, planet2);
+    public void printMinDistanceBetween(Planet planet1, Planet planet2) {
+        final long distance = planetsService.getMinPlanetsDistance(planet1, planet2);
         System.out.println("Расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
                 + new DecimalFormat( "#,###" ).format(distance) + " км.");
     }
+
+    public void printMaxDistanceBetween(Planet planet1, Planet planet2) {
+        final long distance = planetsService.getMaximumPlanetDistance(planet1, planet2);
+        System.out.println("Максимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
+                + new DecimalFormat( "#,###" ).format(Math.abs(planet1.getDistance() + planet2.getDistance())) + " км.");
+
+    }
+
+
+    public void getPlanetSatellite(Planet planet) {
+
+        List<Satellite> satellite = planet.getSat();
+
+        if (satellite == null) {
+            System.out.println("У планеты " + planet.getName() + " нет спутников");
+        } else {
+
+            System.out.println("Количество спутников у планеты "  + planet.getName() + ": "  + satellite.size());
+
+            for (Satellite x : satellite) {
+                System.out.print(x.getName() + " ");
+            }
+
+        }
+
+    }
+
 }

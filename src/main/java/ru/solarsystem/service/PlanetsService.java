@@ -11,36 +11,12 @@ import java.util.List;
 public class PlanetsService {
 
 
-    public long getPlanetsDistance(Planet planet1, Planet planet2) {
+    public long getMinPlanetsDistance(Planet planet1, Planet planet2) {
         return Math.abs(planet1.getDistance() - planet2.getDistance());
-
-    public void getMaximumPlanetDistance(Planet planet1, Planet planet2) {
-        System.out.println("Максимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
-                + new DecimalFormat( "#,###" ).format(Math.abs(planet1.getDistance() + planet2.getDistance())) + " км.");
     }
 
-   
-
-
-    }
-
-
-    public void getPlanetSatellite(Planet planet) {
-
-        List<Satellite> satellite = planet.getSat();
-
-        if (satellite == null) {
-            System.out.println("У планеты " + planet.getName() + " нет спутников");
-        } else {
-
-            System.out.println("Количество спутников у планеты "  + planet.getName() + ": "  + satellite.size());
-
-            for (Satellite x : satellite) {
-                System.out.print(x.getName() + " ");
-            }
-
-        }
-
+    public long getMaximumPlanetDistance(Planet planet1, Planet planet2) {
+         return Math.abs(planet1.getDistance() + planet2.getDistance());
     }
 
 }
