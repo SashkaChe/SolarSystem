@@ -12,7 +12,7 @@ public class SolarSystem {
 
         ApplicationContext context = new AnnotationConfigApplicationContext("ru.solarsystem");
 
-        Jupiter obj = context.getBean(Jupiter.class);
+        Neptune obj = context.getBean(Neptune.class);
         Venus obj2 = context.getBean(Venus.class);
 
         context.getBean(ConsoleController.class).printMinDistanceBetween(obj, obj2);

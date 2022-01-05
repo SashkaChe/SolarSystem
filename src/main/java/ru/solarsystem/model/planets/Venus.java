@@ -1,16 +1,23 @@
 package ru.solarsystem.model.planets;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import ru.solarsystem.model.satellite.Satellite;
 
-import java.util.List;
 
 @Component
 public class Venus implements Planet {
 
     private String name = "Венера";
     private long distance_to_sun = 108_000_000;
+    private long revolution_around_sun = 225;
+    private long diameter = 12_100;
+
+    public long getRevolution_around_sun() {
+        return revolution_around_sun;
+    }
+
+    public long getDiameter() {
+        return diameter;
+    }
 
     public String getName() {
         return name;

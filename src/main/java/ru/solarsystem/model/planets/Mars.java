@@ -20,7 +20,16 @@ public class Mars implements Planet {
 
     private String name = "Марс";
     private long distance_to_sun = 228_000_000;
+    private long revolution_around_sun = 687;
+    private long diameter = 6792;
 
+    public long getRevolution_around_sun() {
+        return revolution_around_sun;
+    }
+
+    public long getDiameter() {
+        return diameter;
+    }
 
 
     public List<Satellite> getSat() {

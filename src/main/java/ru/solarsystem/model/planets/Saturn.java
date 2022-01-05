@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Jupiter implements Planet {
+public class Saturn implements Planet {
 
-    @Value("#{${satelliteJupiterList}}")
+    @Value("#{${satelliteSaturnList}}")
     private List<Satellite> satellite = new ArrayList<>();
 
-    private String name = "Юпитер";
-    private long distance_to_sun = 778_000_000;
-    private long revolution_around_sun = 4332;
-    private long diameter = 143_884;
+    private String name = "Сатурн";
+    private long distance_to_sun = 1_430_000_000;
+    private long revolution_around_sun = 10_759;
+    private long diameter = 120_536;
 
     public long getRevolution_around_sun() {
         return revolution_around_sun;

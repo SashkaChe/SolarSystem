@@ -25,7 +25,7 @@ public class ConsoleController {
 
     public void printMinDistanceBetween(Planet planet1, Planet planet2) {
         final long distance = planetsService.getMinPlanetsDistance(planet1, planet2);
-        System.out.println("Расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
+        System.out.println("Минимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
                 + new DecimalFormat( "#,###" ).format(distance) + " км.");
     }
 
