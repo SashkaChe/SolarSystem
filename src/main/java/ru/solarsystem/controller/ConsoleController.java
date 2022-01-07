@@ -33,26 +33,18 @@ public class ConsoleController {
         final long distance = planetsService.getMaximumPlanetDistance(planet1, planet2);
         System.out.println("Максимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
                 + new DecimalFormat( "#,###" ).format(Math.abs(planet1.getDistance() + planet2.getDistance())) + " км.");
-
     }
 
-
-    public void getPlanetSatellite(Planet planet) {
-
-        List<Satellite> satellite = planetsService.getSatelittes(planet);
-
-        if (satellite == null) {
+    public void printPlanetSatellite(Planet planet) {
+        List<Satellite> satelliteList = planetsService.getSatelittes(planet);
+        if (satelliteList == null) {
             System.out.println("У планеты " + planet.getName() + " нет спутников");
         } else {
-
-            System.out.println("Количество спутников у планеты "  + planet.getName() + ": "  + satellite.size());
-
-            for (Satellite x : satellite) {
+            System.out.println("Количество спутников у планеты "  + planet.getName() + ": "  + satelliteList.size());
+            for (Satellite x : satelliteList) {
                 System.out.print(x.getName() + " ");
             }
-
         }
-
     }
 
 }
