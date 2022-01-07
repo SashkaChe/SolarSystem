@@ -44,6 +44,7 @@ public class ConsoleController {
             for (Satellite x : satelliteList) {
                 System.out.print(x.getName() + " ");
             }
+            System.out.println();
         }
     }
 
