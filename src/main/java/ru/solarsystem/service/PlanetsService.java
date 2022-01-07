@@ -17,6 +17,12 @@ public class PlanetsService {
 
     public long getMaximumPlanetDistance(Planet planet1, Planet planet2) {
          return Math.abs(planet1.getDistance() + planet2.getDistance());
+
+    }
+
+    public List<Satellite> getSatelittes(Planet planet) {
+        return planet.getSat();
+
     }
 
 }

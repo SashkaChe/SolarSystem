@@ -39,7 +39,7 @@ public class ConsoleController {
 
     public void getPlanetSatellite(Planet planet) {
 
-        List<Satellite> satellite = planet.getSat();
+        List<Satellite> satellite = planetsService.getSatelittes(planet);
 
         if (satellite == null) {
             System.out.println("У планеты " + planet.getName() + " нет спутников");
