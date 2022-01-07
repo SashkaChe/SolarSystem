@@ -17,7 +17,7 @@ public class SolarSystem {
 
         context.getBean(ConsoleController.class).printMinDistanceBetween(obj, obj2);
         context.getBean(ConsoleController.class).printMaxDistanceBetween(obj, obj2);
-        context.getBean(ConsoleController.class).getPlanetSatellite(obj);
+        context.getBean(ConsoleController.class).printPlanetSatellite(obj);
 
 
     }

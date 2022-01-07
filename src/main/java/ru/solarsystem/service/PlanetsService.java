@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import ru.solarsystem.model.planets.Planet;
 import ru.solarsystem.model.satellite.Satellite;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 @Component
@@ -17,12 +16,10 @@ public class PlanetsService {
 
     public long getMaximumPlanetDistance(Planet planet1, Planet planet2) {
          return Math.abs(planet1.getDistance() + planet2.getDistance());
-
     }
 
-    public List<Satellite> getSatelittes(Planet planet) {
+    public List<Satellite> getSatellites(Planet planet) {
         return planet.getSat();
-
     }
 
 }
