@@ -1,14 +1,24 @@
 package ru.solarsystem.model.planets;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import ru.solarsystem.model.satellite.Satellite;
 
 import java.util.List;
 
-public interface Planet {
+@Data
+@Builder
+@AllArgsConstructor
+public class Planet {
+    // TODO add constrains for positive values
 
-    public String getName();
-    public long getDistance();
+    private String name;
+    private long distanceToSun;
+    /** продолжительность года в (земных) сутках      */
+    private int yearDuration;
+    private int diameter;
 
-    default public List<Satellite> getSat() {return null;}
+    private List<Satellite> satellites;
 
 }

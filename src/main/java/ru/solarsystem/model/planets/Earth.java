@@ -1,19 +1,14 @@
 package ru.solarsystem.model.planets;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Autowired;
 import ru.solarsystem.model.satellite.Satellite;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Earth implements Planet {
+public class Earth implements PlanetInterface {
 
     @Value("#{${satelliteEarthList}}")
     private List<Satellite> satellite = new ArrayList<>();

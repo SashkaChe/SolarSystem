@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class Venus implements Planet {
+public class Venus implements PlanetInterface {
 
     private String name = "Венера";
     private long distance_to_sun = 108_000_000;

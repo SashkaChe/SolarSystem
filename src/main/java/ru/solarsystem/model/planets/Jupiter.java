@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Jupiter implements Planet {
+public class Jupiter implements PlanetInterface {
 
     @Value("#{${satelliteJupiterList}}")
     private List<Satellite> satellite = new ArrayList<>();
