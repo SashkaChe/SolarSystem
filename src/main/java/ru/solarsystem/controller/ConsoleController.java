@@ -32,7 +32,8 @@ public class ConsoleController {
     public void printMaxDistanceBetween(Planet planet1, Planet planet2) {
         final long distance = planetsService.getMaximumPlanetDistance(planet1, planet2);
         System.out.println("Максимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
-                + new DecimalFormat( "#,###" ).format(Math.abs(planet1.getDistance() + planet2.getDistance())) + " км.");
+                + new DecimalFormat( "#,###" ).format(planetsService.getMaximumPlanetDistance(planet1,planet2))
+                + " км.");
     }
 
     public void printPlanetSatellite(Planet planet) {

@@ -1,11 +1,13 @@
 package ru.solarsystem.data;
 
+import org.springframework.stereotype.Component;
 import ru.solarsystem.model.Planet;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class EnumPlanetRepositoryImpl implements PlanetRepository {
 
     private final List<Planet> allPlanets;
