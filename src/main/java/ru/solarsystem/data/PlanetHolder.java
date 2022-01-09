@@ -53,4 +53,8 @@ public enum PlanetHolder {
     PlanetHolder(Planet planet) {
         this.planet = planet;
     }
+
+    public Planet getPlanet() {
+        return planet;
+    }
 }
