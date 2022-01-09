@@ -2,7 +2,7 @@ package ru.solarsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import ru.solarsystem.model.planets.PlanetInterface;
+import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.satellite.Satellite;
 import ru.solarsystem.service.PlanetsService;
 
@@ -23,19 +23,19 @@ public class ConsoleController {
     }
 
 
-    public void printMinDistanceBetween(PlanetInterface planet1, PlanetInterface planet2) {
+    public void printMinDistanceBetween(Planet planet1, Planet planet2) {
         final long distance = planetsService.getMinPlanetsDistance(planet1, planet2);
         System.out.println("Минимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
                 + new DecimalFormat( "#,###" ).format(distance) + " км.");
     }
 
-    public void printMaxDistanceBetween(PlanetInterface planet1, PlanetInterface planet2) {
+    public void printMaxDistanceBetween(Planet planet1, Planet planet2) {
         final long distance = planetsService.getMaximumPlanetDistance(planet1, planet2);
         System.out.println("Максимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
                 + new DecimalFormat( "#,###" ).format(Math.abs(planet1.getDistance() + planet2.getDistance())) + " км.");
     }
 
-    public void printPlanetSatellite(PlanetInterface planet) {
+    public void printPlanetSatellite(Planet planet) {
         List<Satellite> satelliteList = planetsService.getSatellites(planet);
         if (satelliteList == null) {
             System.out.println("У планеты " + planet.getName() + " нет спутников");
@@ -48,4 +48,7 @@ public class ConsoleController {
         }
     }
 
+    public Planet findPlanetByName(String name) {
+        return planetsService.findPlanetByName(name);
+    }
 }

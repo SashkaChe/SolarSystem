@@ -1,6 +1,6 @@
 package ru.solarsystem.data;
 
-import ru.solarsystem.model.planets.Planet;
+import ru.solarsystem.model.Planet;
 
 /**
  * способ захаркодить все планеты

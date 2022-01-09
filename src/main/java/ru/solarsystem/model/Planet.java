@@ -1,4 +1,4 @@
-package ru.solarsystem.model.planets;
+package ru.solarsystem.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
