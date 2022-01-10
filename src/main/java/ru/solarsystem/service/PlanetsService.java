@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.solarsystem.data.PlanetRepository;
 import ru.solarsystem.model.Planet;
-import ru.solarsystem.model.satellite.Satellite;
+import ru.solarsystem.model.Satellite;
 
 import java.util.List;
 

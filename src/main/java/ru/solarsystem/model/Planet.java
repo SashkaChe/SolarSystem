@@ -3,7 +3,6 @@ package ru.solarsystem.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import ru.solarsystem.model.satellite.Satellite;
 
 import java.util.List;
 

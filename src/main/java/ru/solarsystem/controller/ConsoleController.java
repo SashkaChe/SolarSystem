@@ -3,7 +3,7 @@ package ru.solarsystem.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import ru.solarsystem.model.Planet;
-import ru.solarsystem.model.satellite.Satellite;
+import ru.solarsystem.model.Satellite;
 import ru.solarsystem.service.PlanetsService;
 
 import java.text.DecimalFormat;
