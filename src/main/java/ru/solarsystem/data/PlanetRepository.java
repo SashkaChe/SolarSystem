@@ -7,5 +7,5 @@ import java.util.List;
 public interface PlanetRepository {
     Planet findByIndex(int id);
     Planet findByName(String name);
-    List<Planet> allPlanets();
+    List<Planet> findAll();
 }

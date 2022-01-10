@@ -1,6 +1,7 @@
-package ru.solarsystem.data;
+package ru.solarsystem.data.enum_provider;
 
 import org.springframework.stereotype.Component;
+import ru.solarsystem.data.PlanetRepository;
 import ru.solarsystem.model.Planet;
 
 import java.util.Arrays;
@@ -30,7 +31,7 @@ public class EnumPlanetRepositoryImpl implements PlanetRepository {
     }
 
     @Override
-    public List<Planet> allPlanets() {
+    public List<Planet> findAll() {
         return allPlanets;
     }
 
