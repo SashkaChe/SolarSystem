@@ -1,15 +1,15 @@
 package ru.solarsystem.service;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import ru.solarsystem.data.enum_provider.EnumPlanetRepositoryImpl;
 import ru.solarsystem.model.Planet;
 
 import static org.junit.Assert.*;
 
 public class PlanetServiceTest {
 
-    @Autowired
-    private PlanetsService service;
+    // не использует Спринг, не знает про бины
+    private final PlanetsService service = new PlanetsService(new EnumPlanetRepositoryImpl());
 
     @Test
     public void minimumPlanetDistance() {
