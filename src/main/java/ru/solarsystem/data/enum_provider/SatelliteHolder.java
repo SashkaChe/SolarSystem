@@ -1,4 +1,4 @@
-package ru.solarsystem.data;
+package ru.solarsystem.data.enum_provider;
 
 import ru.solarsystem.model.Satellite;
 
@@ -45,51 +45,51 @@ public enum SatelliteHolder {
         }
 
         public static List<Satellite> getEarthSatellites() {
-        List<Satellite> satellite = new ArrayList<>();
-        satellite.add(SatelliteHolder.Moon.satellite);
-        return satellite;
+        List<Satellite> satellites = new ArrayList<>();
+            satellites.add(SatelliteHolder.Moon.satellite);
+        return satellites;
         }
 
         public static List<Satellite> getMarsSatellites() {
-        List<Satellite> satellite = new ArrayList<>();
-        satellite.add(SatelliteHolder.Fobos.satellite);
-        satellite.add(SatelliteHolder.Deimos.satellite);
-        return satellite;
+        List<Satellite> satellites = new ArrayList<>();
+            satellites.add(SatelliteHolder.Fobos.satellite);
+            satellites.add(SatelliteHolder.Deimos.satellite);
+        return satellites;
         }
 
         public static List<Satellite> getJupiterSatellites() {
-        List<Satellite> satellite = new ArrayList<>();
-        satellite.add(SatelliteHolder.Io.satellite);
-        satellite.add(SatelliteHolder.Ganymede.satellite);
-        satellite.add(SatelliteHolder.Callisto.satellite);
-        satellite.add(SatelliteHolder.Europe.satellite);
-        return satellite;
+        List<Satellite> satellites = new ArrayList<>();
+            satellites.add(SatelliteHolder.Io.satellite);
+            satellites.add(SatelliteHolder.Ganymede.satellite);
+            satellites.add(SatelliteHolder.Callisto.satellite);
+            satellites.add(SatelliteHolder.Europe.satellite);
+        return satellites;
         }
 
         public static List<Satellite> getSaturnSatellites() {
-        List<Satellite> satellite = new ArrayList<>();
-        satellite.add(SatelliteHolder.Titan.satellite);
-        satellite.add(SatelliteHolder.Yapet.satellite);
-        satellite.add(SatelliteHolder.Diona.satellite);
-        satellite.add(SatelliteHolder.Rhea.satellite);
-        satellite.add(SatelliteHolder.Tefiya.satellite);
-        return satellite;
+        List<Satellite> satellites = new ArrayList<>();
+            satellites.add(SatelliteHolder.Titan.satellite);
+            satellites.add(SatelliteHolder.Yapet.satellite);
+            satellites.add(SatelliteHolder.Diona.satellite);
+            satellites.add(SatelliteHolder.Rhea.satellite);
+            satellites.add(SatelliteHolder.Tefiya.satellite);
+        return satellites;
         }
 
         public static List<Satellite> getUraniumSatellites() {
-        List<Satellite> satellite = new ArrayList<>();
-        satellite.add(SatelliteHolder.Ariel.satellite);
-        satellite.add(SatelliteHolder.Miranda.satellite);
-        satellite.add(SatelliteHolder.Titaniya.satellite);
-        satellite.add(SatelliteHolder.Oberon.satellite);
-        satellite.add(SatelliteHolder.Umbriel.satellite);
-        return satellite;
+        List<Satellite> satellites = new ArrayList<>();
+            satellites.add(SatelliteHolder.Ariel.satellite);
+            satellites.add(SatelliteHolder.Miranda.satellite);
+            satellites.add(SatelliteHolder.Titaniya.satellite);
+            satellites.add(SatelliteHolder.Oberon.satellite);
+            satellites.add(SatelliteHolder.Umbriel.satellite);
+        return satellites;
         }
 
         public static List<Satellite> getNeptuneSatellites() {
-        List<Satellite> satellite = new ArrayList<>();
-        satellite.add(SatelliteHolder.Triton.satellite);
-        return satellite;
+        List<Satellite> satellites = new ArrayList<>();
+            satellites.add(SatelliteHolder.Triton.satellite);
+        return satellites;
         }
 
         }

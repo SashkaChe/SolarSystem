@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
 import ru.solarsystem.service.PlanetsService;
+import ru.solarsystem.service.SatellitesService;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -16,10 +17,12 @@ import java.util.List;
 public class ConsoleController {
 
     private final PlanetsService planetsService;
+    private final SatellitesService satellitesService;
 
     @Autowired
-    public ConsoleController(PlanetsService planetsService) {
+    public ConsoleController(PlanetsService planetsService, SatellitesService satellitesService) {
         this.planetsService = planetsService;
+        this.satellitesService = satellitesService;
     }
 
 
@@ -52,4 +55,6 @@ public class ConsoleController {
     public Planet findPlanetByName(String name) {
         return planetsService.findPlanetByName(name);
     }
+
+
 }

@@ -1,7 +1,7 @@
 package ru.solarsystem.data;
 
 import ru.solarsystem.model.Planet;
-import ru.solarsystem.model.satellite.Satellite;
+import ru.solarsystem.model.Satellite;
 
 import java.util.List;
 
