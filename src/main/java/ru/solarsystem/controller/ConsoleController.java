@@ -2,9 +2,10 @@ package ru.solarsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import ru.solarsystem.model.planets.Planet;
-import ru.solarsystem.model.satellite.Satellite;
+import ru.solarsystem.model.Planet;
+import ru.solarsystem.model.Satellite;
 import ru.solarsystem.service.PlanetsService;
+import ru.solarsystem.service.SatellitesService;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -16,10 +17,12 @@ import java.util.List;
 public class ConsoleController {
 
     private final PlanetsService planetsService;
+    private final SatellitesService satellitesService;
 
     @Autowired
-    public ConsoleController(PlanetsService planetsService) {
+    public ConsoleController(PlanetsService planetsService, SatellitesService satellitesService) {
         this.planetsService = planetsService;
+        this.satellitesService = satellitesService;
     }
 
 
@@ -32,7 +35,8 @@ public class ConsoleController {
     public void printMaxDistanceBetween(Planet planet1, Planet planet2) {
         final long distance = planetsService.getMaximumPlanetDistance(planet1, planet2);
         System.out.println("Максимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
-                + new DecimalFormat( "#,###" ).format(Math.abs(planet1.getDistance() + planet2.getDistance())) + " км.");
+                + new DecimalFormat( "#,###" ).format(planetsService.getMaximumPlanetDistance(planet1,planet2))
+                + " км.");
     }
 
     public void printPlanetSatellite(Planet planet) {
@@ -47,5 +51,10 @@ public class ConsoleController {
             System.out.println();
         }
     }
+
+    public Planet findPlanetByName(String name) {
+        return planetsService.findPlanetByName(name);
+    }
+
 
 }

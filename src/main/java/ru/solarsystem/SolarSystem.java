@@ -3,23 +3,23 @@ package ru.solarsystem;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.solarsystem.controller.ConsoleController;
-import ru.solarsystem.model.planets.*;
-import ru.solarsystem.service.PlanetsService;
+import ru.solarsystem.model.Planet;
+
 
 public class SolarSystem {
 
     public static void main(String[] args) {
 
         ApplicationContext context = new AnnotationConfigApplicationContext("ru.solarsystem");
+        final ConsoleController consoleController = context.getBean(ConsoleController.class);
 
-        Neptune obj = context.getBean(Neptune.class);
-        Venus obj2 = context.getBean(Venus.class);
+        Planet neptune = consoleController.findPlanetByName("Нептун");
 
-        context.getBean(ConsoleController.class).printMinDistanceBetween(obj, obj2);
-        context.getBean(ConsoleController.class).printMaxDistanceBetween(obj, obj2);
-        context.getBean(ConsoleController.class).printPlanetSatellite(obj);
+        Planet venus = consoleController.findPlanetByName("Венера");
 
-
+        consoleController.printMinDistanceBetween(neptune, venus);
+        consoleController.printMaxDistanceBetween(neptune, venus);
+        consoleController.printPlanetSatellite(neptune);
     }
 
 }
