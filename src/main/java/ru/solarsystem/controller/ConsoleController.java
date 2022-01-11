@@ -10,6 +10,8 @@ import ru.solarsystem.service.SatellitesService;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import static java.lang.Math.round;
+
 /**
  * Контроллер, который выводит информацию в консоль
  */
@@ -54,6 +56,12 @@ public class ConsoleController {
 
     public Planet findPlanetByName(String name) {
         return planetsService.findPlanetByName(name);
+    }
+
+    public void printPlanetYears(Planet planet, int days) {
+        int planet_year = planet.getYearDuration();
+        System.out.println(String.format("За " + days + " земных суток " + planet.getName() + " совершит " + "%.2f" + " оборота вокруг Солнца", (double) days/planet_year));
+        System.out.println();
     }
 
 

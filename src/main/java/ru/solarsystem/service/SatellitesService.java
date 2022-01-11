@@ -12,10 +12,10 @@ import java.util.List;
 @Component
 public class SatellitesService {
 
-    @Autowired
-    private SatelliteRepository repository;
+   @Autowired
+   private SatelliteRepository repository;
 
-    public Satellite findSatelliteByName(String name) {
+   public Satellite findSatelliteByName(String name) {
         return repository.findByName(name);
     }
 

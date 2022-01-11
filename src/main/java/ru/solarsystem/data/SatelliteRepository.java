@@ -1,5 +1,6 @@
 package ru.solarsystem.data;
 
+import org.springframework.stereotype.Component;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
 

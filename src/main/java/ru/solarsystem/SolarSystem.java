@@ -19,7 +19,7 @@ public class SolarSystem {
 
         consoleController.printMinDistanceBetween(neptune, venus);
         consoleController.printMaxDistanceBetween(neptune, venus);
-        consoleController.printPlanetSatellite(neptune);
+        consoleController.printPlanetYears(neptune, 10000);
     }
 
 }
