@@ -1,6 +1,5 @@
 package ru.solarsystem.data.enum_provider;
 
-import ru.solarsystem.data.SatelliteHolder;
 import ru.solarsystem.model.Planet;
 
 /**
