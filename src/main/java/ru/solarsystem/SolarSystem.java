@@ -19,7 +19,6 @@ public class SolarSystem {
 
         consoleController.printMinDistanceBetween(mars, venus);
         consoleController.printMaxDistanceBetween(mars, venus);
-        consoleController.printcCmpareSizePlanets(mars, venus);
     }
 
 }

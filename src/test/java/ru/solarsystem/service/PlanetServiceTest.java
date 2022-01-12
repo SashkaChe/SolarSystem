@@ -27,6 +27,16 @@ public class PlanetServiceTest {
     }
 
     @Test
+    public void rotationPlanet() {
+        final double DELTA = 1e-4;
+        Planet one = Planet.builder().yearDuration(4000).build();
+        final double actual = service.numberRotationPlanet(one, 5000);
+        assertEquals(1.25, actual, DELTA);
+        final double actual2 = service.numberRotationPlanet(one, -5000);
+        assertEquals(0, actual2, DELTA);
+    }
+
+    @Test
     public void findPlanet() {
         final String name = "Земля";
         final Planet actual = service.findPlanetByName(name);
