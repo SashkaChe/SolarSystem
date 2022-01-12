@@ -59,9 +59,31 @@ public class ConsoleController {
     }
 
     public void printPlanetYears(Planet planet, int days) {
-        int planet_year = planet.getYearDuration();
-        System.out.println(String.format("За " + days + " земных суток " + planet.getName() + " совершит " + "%.2f" + " оборота вокруг Солнца", (double) days/planet_year));
+        System.out.println(String.format("За " + days + " земных суток " + planet.getName() + " совершит " + "%.2f" + " оборота вокруг Солнца", planetsService.numberRotationPlanet(planet, days)));
         System.out.println();
+    }
+
+    public void printcCmpareSizePlanets(Planet planet1, Planet planet2) {
+
+        double size = planetsService.compareSizePlanets(planet1, planet2);
+
+        if (size > 1) {
+            System.out.println(String.format(planet1.getName() + " больше в %.2f раз(а) планеты " + planet2.getName(), size));
+            System.out.println();
+        }
+
+        if (size < 1) {
+            System.out.println(String.format(planet1.getName() + " меньше в %.2f раз(а) планеты " + planet2.getName(), size));
+            System.out.println();
+        }
+
+        if (size == 1) {
+            System.out.println(String.format(planet1.getName() + " и " + planet2.getName() + " равны"));
+            System.out.println();
+        }
+
+
+
     }
 
 

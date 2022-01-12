@@ -33,4 +33,18 @@ public class PlanetsService {
     public Planet findPlanetByName(String name) {
         return repository.findByName(name);
     }
+
+    public double numberRotationPlanet(Planet planet, int days) {
+        double numberRotation = (double) days/planet.getYearDuration();
+
+        if (numberRotation > 0) {
+            return numberRotation;
+        }
+        return 0;
+    }
+
+    public double compareSizePlanets(Planet planet1, Planet planet2) {
+        return (double) planet1.getDiameter()/planet2.getDiameter();
+    }
+
 }

@@ -13,13 +13,13 @@ public class SolarSystem {
         ApplicationContext context = new AnnotationConfigApplicationContext("ru.solarsystem");
         final ConsoleController consoleController = context.getBean(ConsoleController.class);
 
-        Planet neptune = consoleController.findPlanetByName("Нептун");
+        Planet mars = consoleController.findPlanetByName("Марс");
 
         Planet venus = consoleController.findPlanetByName("Венера");
 
-        consoleController.printMinDistanceBetween(neptune, venus);
-        consoleController.printMaxDistanceBetween(neptune, venus);
-        consoleController.printPlanetYears(neptune, 10000);
+        consoleController.printMinDistanceBetween(mars, venus);
+        consoleController.printMaxDistanceBetween(mars, venus);
+        consoleController.printcCmpareSizePlanets(mars, venus);
     }
 
 }
