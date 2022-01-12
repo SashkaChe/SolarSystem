@@ -34,6 +34,12 @@ public class PlanetServiceTest {
         assertEquals(1.25, actual, DELTA);
         final double actual2 = service.numberRotationPlanet(one, -5000);
         assertEquals(0, actual2, DELTA);
+        assertEquals(0, service.numberRotationPlanet(one, 0), DELTA);
+        final double fraction = service.numberRotationPlanet(one, 4);
+        assertEquals(0.001, fraction, DELTA);
+        Planet shortPeriod = Planet.builder().yearDuration(12).build();
+        assertEquals(5, service.numberRotationPlanet(shortPeriod, 60), DELTA);
+        assertEquals(1, service.numberRotationPlanet(shortPeriod, 12), DELTA);
     }
 
     @Test
