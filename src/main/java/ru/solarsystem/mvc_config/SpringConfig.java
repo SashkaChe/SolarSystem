@@ -15,7 +15,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @Configuration
 @ComponentScan("ru.solarsystem")
 @EnableWebMvc
-public class SpringConfig  implements WebMvcConfigurer {
+public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
 
@@ -45,6 +45,9 @@ public class SpringConfig  implements WebMvcConfigurer {
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
-        registry.viewResolver(resolver);
-    }
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setForceContentType(true);
+        resolver.setContentType("text/html; charset=UTF-8");
+        registry.viewResolver(resolver);}
+
 }
