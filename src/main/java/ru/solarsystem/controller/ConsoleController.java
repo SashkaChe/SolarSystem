@@ -2,6 +2,7 @@ package ru.solarsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
 import ru.solarsystem.service.PlanetsService;
@@ -19,6 +20,12 @@ public class ConsoleController {
 
     private final PlanetsService planetsService;
     private final SatellitesService satellitesService;
+
+    @GetMapping("/")
+    public String helloMVC() {
+    return "index";
+    }
+
 
     @Autowired
     public ConsoleController(PlanetsService planetsService, SatellitesService satellitesService) {
