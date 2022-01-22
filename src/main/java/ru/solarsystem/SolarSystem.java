@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.solarsystem.controller.ConsoleController;
 import ru.solarsystem.model.Planet;
+import ru.solarsystem.mvc_config.SpringConfig;
 
 
 public class SolarSystem {

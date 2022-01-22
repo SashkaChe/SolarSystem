@@ -21,12 +21,6 @@ public class ConsoleController {
     private final PlanetsService planetsService;
     private final SatellitesService satellitesService;
 
-    @GetMapping("/")
-    public String helloMVC() {
-    return "index";
-    }
-
-
     @Autowired
     public ConsoleController(PlanetsService planetsService, SatellitesService satellitesService) {
         this.planetsService = planetsService;
