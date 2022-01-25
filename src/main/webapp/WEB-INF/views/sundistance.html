@@ -14,7 +14,7 @@
 
 <form method="post" action="/sundistance">
 <select name="planet">
-    <option th:each="user : ${allPlanets}" th:text="${user.getName()}" th:value="${allPlanets.indexOf(user)}"></option>
+    <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
 </select>
     <input type="submit" value="Planet">
 </form>
