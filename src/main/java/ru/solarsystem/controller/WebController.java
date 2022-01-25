@@ -27,9 +27,10 @@ public class WebController {
 
 
     @PostMapping("/planet_distance_sun")
-    public String sunDistancePagePost(@RequestParam("planet") String name, Model model) {
-        model.addAttribute("planet", planetsService.findPlanetByName(name));
-        return "planet_distance_sun";
+    public String sunDistancePagePost(@RequestParam("planet") int num, Model model) {
+
+        model.addAttribute("planet", planetsService.findByIndex(num));
+        return "/planet_distance_sun";
     }
 
 }

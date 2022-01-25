@@ -39,6 +39,9 @@ public class PlanetsService {
         return repository.findByName(name);
     }
 
+    public Planet findByIndex(int index) {return repository.findByIndex(index);
+    }
+
     public double numberRotationPlanet(Planet planet, int days) {
         double numberRotation = (double) days/planet.getYearDuration();
 
