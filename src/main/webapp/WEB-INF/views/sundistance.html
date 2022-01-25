@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>SolarSystem</title>
@@ -11,18 +11,27 @@
 
 Укажите планету:<br><br>
 
-<select id="selcolor">
+<form method="post" action="/sundistance">
+<select name="planet" id="planet">
 
-    <option value="Mercury">Меркурий</option>
-    <option value="Venus">Венера</option>
-    <option value="Earth">Земля</option>
-    <option value="Mars">Марс</option>
-    <option value="Jupiter">Юпитер</option>
-    <option value="Saturn">Сатурн</option>
-    <option value="Uranium">Уран</option>
-    <option value="Neptune">Нептун</option>
+    <option value="Меркурий">Меркурий</option>
+    <option value="Венера">Венера</option>
+    <option value="Земля">Земля</option>
+    <option value="Марс">Марс</option>
+    <option value="Юпитер">Юпитер</option>
+    <option value="Сатурн">Сатурн</option>
+    <option value="Уран">Уран</option>
+    <option value="Нептун">Нептун</option>
 
 </select>
+    <input type="submit" value="Planet">
+</form>
+
+
+<div th:text="${planet.getDistanceToSun()}"></div>
+
+
+
 <br><br>
 <a href="/">На главную</a><br><br>
 

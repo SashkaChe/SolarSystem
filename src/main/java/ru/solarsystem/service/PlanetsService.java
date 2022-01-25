@@ -30,6 +30,11 @@ public class PlanetsService {
         return planet.getSatellites();
     }
 
+    public List<Planet> findAllPlanets() {
+        return repository.findAll();
+    }
+
+
     public Planet findPlanetByName(String name) {
         return repository.findByName(name);
     }
