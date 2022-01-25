@@ -29,7 +29,7 @@ public class WebController {
 
     @PostMapping("/sundistance")
     public String sunDistancePagePost(@RequestParam("planet") int num, Model model) {
-
+        model.addAttribute("allPlanets", planetsService.findAllPlanets());
         model.addAttribute("planet", planetsService.findByIndex(num));
         return "/sundistance";
     }
