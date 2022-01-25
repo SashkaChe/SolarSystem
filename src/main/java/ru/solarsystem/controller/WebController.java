@@ -21,16 +21,17 @@ public class WebController {
     }
 
     @GetMapping("/sundistance")
-     public String sunDistancePageGet() {
+     public String sunDistancePageGet(Model model) {
+        model.addAttribute("allPlanets", planetsService.findAllPlanets());
         return "sundistance";
     }
 
 
-    @PostMapping("/planet_distance_sun")
+    @PostMapping("/sundistance")
     public String sunDistancePagePost(@RequestParam("planet") int num, Model model) {
 
         model.addAttribute("planet", planetsService.findByIndex(num));
-        return "/planet_distance_sun";
+        return "/sundistance";
     }
 
 }
