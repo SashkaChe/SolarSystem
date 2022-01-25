@@ -15,7 +15,7 @@ public class WebController {
     @Autowired
     private PlanetsService planetsService;
 
-    @GetMapping("/sundistance")
+    @GetMapping("/")
     public String indexPage() {
          return "index";
     }
@@ -26,10 +26,10 @@ public class WebController {
     }
 
 
-    @PostMapping("/sundistance")
+    @PostMapping("/planet_distance_sun")
     public String sunDistancePagePost(@RequestParam("planet") String name, Model model) {
         model.addAttribute("planet", planetsService.findPlanetByName(name));
-        return "sundistance";
+        return "planet_distance_sun";
     }
 
 }

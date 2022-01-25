@@ -11,8 +11,9 @@
 
 Укажите планету:<br><br>
 
-<form method="post" action="/sundistance">
-<select name="planet" id="planet">
+
+<form method="post" action="/planet_distance_sun">
+<select th:name="planet" th:id="planet">
 
     <option value="Меркурий">Меркурий</option>
     <option value="Венера">Венера</option>
@@ -26,9 +27,6 @@
 </select>
     <input type="submit" value="Planet">
 </form>
-
-
-<div th:text="${planet.getDistanceToSun()}"></div>
 
 
 
