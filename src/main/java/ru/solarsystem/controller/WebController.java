@@ -16,6 +16,9 @@ public class WebController {
     @Autowired
     private PlanetsService planetsService;
 
+    private static void modelAddAllPlanets(Model model, PlanetsService planetsService) {
+        model.addAttribute("allPlanets", planetsService.findAllPlanets());
+    }
 
     @GetMapping("/")
     public String indexPage() {
@@ -24,35 +27,35 @@ public class WebController {
 
     @GetMapping("/sundistance")
      public String sunDistancePageGet(Model model) {
-        model.addAttribute("allPlanets", planetsService.findAllPlanets());
+        modelAddAllPlanets(model, planetsService);
         return "sundistance";
     }
 
     @GetMapping("/planetdistance")
     public String planetDistancePageGet(Model model) {
-        model.addAttribute("allPlanets", planetsService.findAllPlanets());
+        modelAddAllPlanets(model, planetsService);
         return "planetdistance";
     }
 
     @GetMapping("/satellites")
     public String planetSatellitesPageGet(Model model) {
-        model.addAttribute("allPlanets", planetsService.findAllPlanets());
+        modelAddAllPlanets(model, planetsService);
         return "satellites";
     }
 
 
     @PostMapping("/satellites")
     public String planetSatellites(@RequestParam("planet") int num, Model model) {
-        model.addAttribute("allPlanets", planetsService.findAllPlanets());
-        model.addAttribute("planet", planetsService.getSatellites(planetsService.findByIndex(num)));
-        model.addAttribute("thisPlanet", planetsService.findByIndex(num));
+        modelAddAllPlanets(model, planetsService);
+        model.addAttribute("satelliteList", planetsService.getSatellites(planetsService.findByIndex(num)));
+        model.addAttribute("planetName", planetsService.findByIndex(num).getName());
         return "satellites";
     }
 
 
     @PostMapping("/sundistance")
     public String planetList(@RequestParam("planet") int num, Model model) {
-        model.addAttribute("allPlanets", planetsService.findAllPlanets());
+        modelAddAllPlanets(model, planetsService);
         model.addAttribute("planet", planetsService.findByIndex(num));
         return "sundistance";
     }
@@ -60,9 +63,9 @@ public class WebController {
 
     @PostMapping("/planetdistance")
     public String planetList(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
-        model.addAttribute("allPlanets", planetsService.findAllPlanets());
-        model.addAttribute("planet_1", planetsService.findByIndex(planet1));
-        model.addAttribute("planet_2", planetsService.findByIndex(planet2));
+        modelAddAllPlanets(model, planetsService);
+        model.addAttribute("planet_1", planetsService.findByIndex(planet1).getName());
+        model.addAttribute("planet_2", planetsService.findByIndex(planet2).getName());
         model.addAttribute("planet_mindistance", planetsService.getMinPlanetsDistance(planetsService.findByIndex(planet1), planetsService.findByIndex(planet2)));
         model.addAttribute("planet_maxdistance", planetsService.getMaximumPlanetDistance(planetsService.findByIndex(planet1), planetsService.findByIndex(planet2)));
         return "planetdistance";

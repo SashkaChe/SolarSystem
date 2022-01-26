@@ -26,10 +26,19 @@
 
 <br><br>
 
-<div th:text="'Минимальное расстояние от планеты ' + ${planet_1.getName()} + ' до планеты ' + ${planet_2.getName()} + ' равно ' + ${planet_mindistance} + ' км.'"></div>
+<div th:unless="${planet_1} == ${planet_2}">
+<div th:text="'Минимальное расстояние от планеты ' + ${planet_1} + ' до планеты ' + ${planet_2} + ' равно ' + ${planet_mindistance} + ' км.'" th:unless="${planet_1} == null"></div>
 <br>
-<div th:text="'Максимальное расстояние от планеты ' + ${planet_1.getName()} + ' до планеты ' + ${planet_2.getName()} + ' равно ' + ${planet_maxdistance} +  ' км.'"></div>
+<div th:text="'Максимальное расстояние от планеты ' + ${planet_1} + ' до планеты ' + ${planet_2} + ' равно ' + ${planet_maxdistance} +  ' км.'" th:unless="${planet_2} == null"></div>
+</div>
+
+
+<div th:unless="${planet_1} != ${planet_2}">
+    <div th:unless="${planet_1} == null">Необходимо выбрать разные планеты</div>
+</div>
+
 <br><br>
+
 <div>
     <a href="/" >На главную</a>
 </div>

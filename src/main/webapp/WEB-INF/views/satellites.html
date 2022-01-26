@@ -21,12 +21,17 @@
 
 <br>
 
-<h3 th:text="'Спутники планеты ' + ${thisPlanet.getName()}"></h3>
+<h3 th:text="'Спутники планеты ' + ${planetName}" th:unless="${planetName} == null"></h3>
 
-<div th:each="currentSatellite : ${planet}" th:text="${currentSatellite.getName()}"></div>
+<div th:each="currentSatellite : ${satelliteList}" th:text="${currentSatellite.getName()}"></div>
+
+<div th:unless="${satelliteList} != null" th:text="У планеты нет спутников"></div>
+
 <br>
 
-<a href="/" >На главную</a>
+<div>
+    <a href="/" >На главную</a>
+</div>
 
 
 
