@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>SolarSystem</title>
+</head>
+
+<body>
+
+<h1>Спутники планеты</h1>
+
+Укажите планету:<br><br>
+
+
+<form method="post" action="/satellites">
+    <select name="planet">
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+    </select>
+    <input type="submit" value="OK">
+</form>
+
+<br>
+
+<h3 th:text="'Спутники планеты ' + ${thisPlanet.getName()}"></h3>
+
+<div th:each="currentSatellite : ${planet}" th:text="${currentSatellite.getName()}"></div>
+<br>
+
+<a href="/" >На главную</a>
+
+
+
+</body>
+</html>

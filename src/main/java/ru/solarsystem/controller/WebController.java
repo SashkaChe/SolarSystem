@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.solarsystem.data.SatelliteRepository;
 import ru.solarsystem.service.PlanetsService;
 
 
@@ -14,6 +15,7 @@ public class WebController {
 
     @Autowired
     private PlanetsService planetsService;
+
 
     @GetMapping("/")
     public String indexPage() {
@@ -30,6 +32,21 @@ public class WebController {
     public String planetDistancePageGet(Model model) {
         model.addAttribute("allPlanets", planetsService.findAllPlanets());
         return "planetdistance";
+    }
+
+    @GetMapping("/satellites")
+    public String planetSatellitesPageGet(Model model) {
+        model.addAttribute("allPlanets", planetsService.findAllPlanets());
+        return "satellites";
+    }
+
+
+    @PostMapping("/satellites")
+    public String planetSatellites(@RequestParam("planet") int num, Model model) {
+        model.addAttribute("allPlanets", planetsService.findAllPlanets());
+        model.addAttribute("planet", planetsService.getSatellites(planetsService.findByIndex(num)));
+        model.addAttribute("thisPlanet", planetsService.findByIndex(num));
+        return "satellites";
     }
 
 
