@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>SolarSystem</title>
+</head>
+
+<body>
+
+<h1>Расстояние между планетами</h1>
+
+Укажите планеты:<br><br>
+
+
+<form method="post" action="/planetdistance">
+    <select name="planet1">
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+    </select>
+
+    <select name="planet2">
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+    </select>
+
+    <input type="submit" value="OK">
+</form>
+
+<br><br>
+
+<div th:text="'Минимальное расстояние от планеты ' + ${planet_1.getName()} + ' до планеты ' + ${planet_2.getName()} + ' равно ' + ${planet_mindistance} + 'км.'"></div>
+<br>
+<div th:text="'Максимальное расстояние от планеты ' + ${planet_1.getName()} + ' до планеты ' + ${planet_2.getName()} + ' равно ' + ${planet_maxdistance} +  'км.'"></div>
+<br><br>
+<div>
+    <a href="/" >На главную</a>
+</div>
+
+
+</body>
+</html>
