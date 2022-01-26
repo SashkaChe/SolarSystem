@@ -16,15 +16,15 @@
 <select name="planet">
     <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
 </select>
-    <input type="submit" value="Planet">
+    <input type="submit" value="OK">
 </form>
 
 <br><br>
 
-
-<div th:text="${planet.getDistanceToSun()}"></div>
+<div th:text="'Расстояние от планеты ' + ${planet.getName()} + ' до Солнца равно: ' + ${planet.getDistanceToSun()} + ' км.'"></div>
 <br><br>
 <a href="/" >На главную</a>
+
 
 
 </body>
