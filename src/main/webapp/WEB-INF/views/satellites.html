@@ -25,7 +25,9 @@
 
 <div th:each="currentSatellite : ${satelliteList}" th:text="${currentSatellite.getName()}"></div>
 
-<div th:unless="${satelliteList} != null" th:text="У планеты нет спутников"></div>
+<div th:unless="${planetName} == null">
+<div th:unless="${satelliteList} != null" >У планеты нет спутников</div>
+</div>
 
 <br>
 
