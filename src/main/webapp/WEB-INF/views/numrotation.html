@@ -7,34 +7,38 @@
 
 <body>
 
-<h1>Спутники планеты</h1>
+<h1>Количество оборотов планеты за N земных суток</h1>
 
-Укажите планету:<br><br>
+Укажите планету и количество суток:<br><br>
 
 
-<form method="post" action="/satellites">
+<form method="post" action="/numrotation">
     <select name="planet">
         <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
     </select>
+
+    <input name="days" type="text" size="40">
+
     <input type="submit" value="OK">
 </form>
 
-<br>
+<br><br>
 
-<div th:unless="${planetName} == null">
-<h3 th:text="'Спутники планеты ' + ${planetName}" ></h3>
 
-<div th:each="currentSatellite : ${satelliteList}" th:text="${currentSatellite.getName()}"></div>
+<div th:unless="${numberRotation} == null">
 
-<div th:unless="${satelliteList} != null" >У планеты нет спутников</div>
+    <div th:text="'Планета ' + ${planetName} + ' совершит ' + ${numberRotation} + ' оборота за ' + ${days} + ' Земных суток' "></div>
+
+
 </div>
 
-<br>
+
+
+<br><br>
 
 <div>
     <a href="/" >На главную</a>
 </div>
-
 
 
 </body>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.solarsystem.data.SatelliteRepository;
+import ru.solarsystem.model.Planet;
 import ru.solarsystem.service.PlanetsService;
 
 
@@ -41,6 +42,38 @@ public class WebController {
     public String planetSatellitesPageGet(Model model) {
         modelAddAllPlanets(model, planetsService);
         return "satellites";
+    }
+
+    @GetMapping("/planetsize")
+    public String planetSizePageGet(Model model) {
+        modelAddAllPlanets(model, planetsService);
+        return "planetsize";
+    }
+
+    @GetMapping("/numrotation")
+    public String numberRotationPageGet(Model model) {
+        modelAddAllPlanets(model, planetsService);
+        return "numrotation";
+    }
+
+
+    @PostMapping("/numrotation")
+    public String numberRotation(@RequestParam("planet") int num, @RequestParam("days") int days, Model model) {
+        modelAddAllPlanets(model, planetsService);
+        model.addAttribute("numberRotation", planetsService.numberRotationPlanet(planetsService.findByIndex(num), days));
+        model.addAttribute("planetName", planetsService.findByIndex(num).getName());
+        model.addAttribute("days", days);
+        return "numrotation";
+    }
+
+
+    @PostMapping("/planetsize")
+    public String planetSize(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
+        modelAddAllPlanets(model, planetsService);
+        model.addAttribute("planetName1", planetsService.findByIndex(planet1).getName());
+        model.addAttribute("planetName2", planetsService.findByIndex(planet2).getName());
+        model.addAttribute("compareSize", Math.ceil(planetsService.compareSizePlanets(planetsService.findByIndex(planet1), planetsService.findByIndex(planet2)) * Math.pow(10, 3)) / Math.pow(10, 3));
+        return "planetsize";
     }
 
 

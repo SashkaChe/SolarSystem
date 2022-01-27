@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>SolarSystem</title>
+</head>
+
+<body>
+
+<h1>Сравнить размеры двух планет</h1>
+
+Укажите планеты:<br><br>
+
+
+<form method="post" action="/planetsize">
+    <select name="planet1">
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+    </select>
+
+    <select name="planet2">
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+    </select>
+
+    <input type="submit" value="OK">
+</form>
+
+<br><br>
+
+
+<div th:unless="${planetName1} == ${planetName2}">
+
+    <div th:text="'Размер планеты ' + ${planetName1} + ' составляет ' + ${compareSize} + ' размера планеты ' + ${planetName2} "></div>
+
+   <!--
+    <div th:text="'Планета ' + ${planetName1} + ' в ' + ${compareSize} + ' раз(-а) меньше планеты ' + ${planetName2} " th:unless="${compareSize} > 1"></div>
+    <div th:text="'Планета ' + ${planetName1} + ' в ' + ${compareSize} + ' раз(-а) больше планеты ' + ${planetName2} " th:unless="${compareSize} < 1"></div>
+-->
+
+</div>
+
+
+<div th:unless="${planetName1} != ${planetName2}">
+    <div th:unless="${planetName1} == null">Необходимо выбрать разные планеты</div>
+</div>
+
+<br><br>
+
+<div>
+    <a href="/" >На главную</a>
+</div>
+
+
+</body>
+</html>
