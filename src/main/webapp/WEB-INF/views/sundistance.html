@@ -22,12 +22,12 @@
 
 <br><br>
 
-<div th:text="'Расстояние от планеты ' + ${planet.getName()} + ' до Солнца равно: ' + ${planet.getDistanceToSun()} + ' км.'"></div>
+<div th:text="'Расстояние от планеты ' + ${planet.getName()} + ' до Солнца равно: ' + ${planet.getDistanceToSun()} + ' км.'" th:unless="${planet} == null"></div>
 <br><br>
 
-
+<div>
 <a href="/" >На главную</a>
-
+</div>
 
 
 </body>

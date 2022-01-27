@@ -17,7 +17,7 @@ public class WebController {
     @Autowired
     private PlanetsService planetsService;
 
-    private static void modelAddAllPlanets(Model model, PlanetsService planetsService) {
+    private static void addAllPlanetsInModel(Model model, PlanetsService planetsService) {
         model.addAttribute("allPlanets", planetsService.findAllPlanets());
     }
 
@@ -28,38 +28,38 @@ public class WebController {
 
     @GetMapping("/sundistance")
      public String sunDistancePageGet(Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         return "sundistance";
     }
 
     @GetMapping("/planetdistance")
     public String planetDistancePageGet(Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         return "planetdistance";
     }
 
     @GetMapping("/satellites")
     public String planetSatellitesPageGet(Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         return "satellites";
     }
 
     @GetMapping("/planetsize")
     public String planetSizePageGet(Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         return "planetsize";
     }
 
     @GetMapping("/numrotation")
     public String numberRotationPageGet(Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         return "numrotation";
     }
 
 
     @PostMapping("/numrotation")
     public String numberRotation(@RequestParam("planet") int num, @RequestParam("days") int days, Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         model.addAttribute("numberRotation", planetsService.numberRotationPlanet(planetsService.findByIndex(num), days));
         model.addAttribute("planetName", planetsService.findByIndex(num).getName());
         model.addAttribute("days", days);
@@ -69,7 +69,7 @@ public class WebController {
 
     @PostMapping("/planetsize")
     public String planetSize(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         model.addAttribute("planetName1", planetsService.findByIndex(planet1).getName());
         model.addAttribute("planetName2", planetsService.findByIndex(planet2).getName());
         model.addAttribute("compareSize", Math.ceil(planetsService.compareSizePlanets(planetsService.findByIndex(planet1), planetsService.findByIndex(planet2)) * Math.pow(10, 3)) / Math.pow(10, 3));
@@ -79,7 +79,7 @@ public class WebController {
 
     @PostMapping("/satellites")
     public String planetSatellites(@RequestParam("planet") int num, Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         model.addAttribute("satelliteList", planetsService.getSatellites(planetsService.findByIndex(num)));
         model.addAttribute("planetName", planetsService.findByIndex(num).getName());
         return "satellites";
@@ -88,7 +88,7 @@ public class WebController {
 
     @PostMapping("/sundistance")
     public String planetList(@RequestParam("planet") int num, Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         model.addAttribute("planet", planetsService.findByIndex(num));
         return "sundistance";
     }
@@ -96,7 +96,7 @@ public class WebController {
 
     @PostMapping("/planetdistance")
     public String planetList(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
-        modelAddAllPlanets(model, planetsService);
+        addAllPlanetsInModel(model, planetsService);
         model.addAttribute("planet_1", planetsService.findByIndex(planet1).getName());
         model.addAttribute("planet_2", planetsService.findByIndex(planet2).getName());
         model.addAttribute("planet_mindistance", planetsService.getMinPlanetsDistance(planetsService.findByIndex(planet1), planetsService.findByIndex(planet2)));
