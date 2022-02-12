@@ -2,6 +2,7 @@ package ru.solarsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpServerErrorException;
 import ru.solarsystem.data.PlanetRepository;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
@@ -26,6 +27,10 @@ public class PlanetsService {
          return Math.abs(planet1.getDistanceToSun() + planet2.getDistanceToSun());
     }
 
+    public List<Planet> allPlanets() {
+        return repository.findAll();
+    }
+
     public List<Satellite> getSatellites(Planet planet) {
         return planet.getSatellites();
     }
@@ -47,4 +52,8 @@ public class PlanetsService {
         return (double) planet1.getDiameter()/planet2.getDiameter();
     }
 
+    public Planet findByIndex(int firstPlanetId) {
+        // TODO implement
+        return null;
+    }
 }
