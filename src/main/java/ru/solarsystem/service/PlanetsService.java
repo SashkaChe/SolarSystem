@@ -18,6 +18,7 @@ public class PlanetsService {
         this.repository = repository;
     }
 
+
     public long getMinPlanetsDistance(Planet planet1, Planet planet2) {
         return Math.abs(planet1.getDistanceToSun() - planet2.getDistanceToSun());
     }
