@@ -21,13 +21,14 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @ComponentScan("ru.solarsystem")
 @EnableWebMvc
-@EnableJpaRepositories
+@EnableJpaRepositories("ru.solarsystem.data")
 @EnableTransactionManagement
 @PropertySource("classpath:/prop.properties")
 public class SpringConfig implements WebMvcConfigurer {
@@ -48,20 +49,7 @@ public class SpringConfig implements WebMvcConfigurer {
 
     @Bean
     public PlatformTransactionManager transactionManager() {
-        return new JpaTransactionManager(entityManagerFactory().);
-    }
-
-    @Bean
-    public Properties hibernateProperties () {
-        Properties hibernateProp = new Properties();
-        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        hibernateProp.put("hibernate.format sql", true);
-        hibernateProp.put("hibernate.use sql comments", true);
-        hibernateProp.put("hibernate. show _ sql", true);
-        hibernateProp.put("hibernate.max fetch depth", 3);
-        hibernateProp.put("hibernate.jdbc.batch_size", 10);
-        hibernateProp.put("hibernate. j dbc. fetch _ si ze", 50);
-        return hibernateProp;
+        return new JpaTransactionManager(entityManagerFactory());
     }
 
     @Bean
@@ -71,7 +59,6 @@ public class SpringConfig implements WebMvcConfigurer {
         factoryBean.setPackagesToScan("ru.solarsystem");
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        factoryBean.setJpaProperties(hibernateProperties());
         factoryBean.afterPropertiesSet();
         return factoryBean.getNativeEntityManagerFactory();
     }
