@@ -28,51 +28,15 @@ public class ConsoleController {
         this.satellitesService = satellitesService;
     }
 
+    public void allPlanets(){
+        List<Planet> planets = planetsService.findAllPlanets();
+        System.out.println("Список планет: ");
 
-    public void printMinDistanceBetween(Planet planet1, Planet planet2) {
-        final long distance = planetsService.getMinPlanetsDistance(planet1, planet2);
-        System.out.println("Минимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
-                + new DecimalFormat( "#,###" ).format(distance) + " км.");
-    }
-
-    public void printMaxDistanceBetween(Planet planet1, Planet planet2) {
-        final long distance = planetsService.getMaximumPlanetDistance(planet1, planet2);
-        System.out.println("Максимальное расстояние между планетами " + planet1.getName() + " и " + planet2.getName() + ": "
-                + new DecimalFormat( "#,###" ).format(planetsService.getMaximumPlanetDistance(planet1,planet2))
-                + " км.");
-    }
-
-    public void printPlanetSatellite(Planet planet) {
-        List<Satellite> satelliteList = planetsService.getSatellites(planet);
-        if (satelliteList == null) {
-            System.out.println("У планеты " + planet.getName() + " нет спутников");
-        } else {
-            System.out.println("Количество спутников у планеты "  + planet.getName() + ": "  + satelliteList.size());
-            for (Satellite x : satelliteList) {
-                System.out.print(x.getName() + " ");
-            }
-            System.out.println();
+        for (Planet obj : planets) {
+            System.out.println(obj.getName());
         }
+
     }
 
-    public Planet findPlanetByName(String name) {
-        return planetsService.findPlanetByName(name);
     }
 
-    public void printPlanetYears(Planet planet, int days) {
-        System.out.println(String.format("За " + days + " земных суток " + planet.getName() + " совершит " + "%.2f" + " оборота вокруг Солнца", planetsService.numberRotationPlanet(planet, days)));
-          }
-
-    public void printCompareSizePlanets(Planet planet1, Planet planet2) {
-        double size = planetsService.compareSizePlanets(planet1, planet2);
-        if (size > 1) {
-            System.out.println(String.format(planet1.getName() + " больше в %.2f раз(а) планеты " + planet2.getName(), size));
-                 }
-        if (size < 1) {
-            System.out.println(String.format(planet1.getName() + " меньше в %.2f раз(а) планеты " + planet2.getName(), size));
-               }
-        if (size == 1) {
-            System.out.println(String.format(planet1.getName() + " и " + planet2.getName() + " равны"));
-                }
-    }
-}

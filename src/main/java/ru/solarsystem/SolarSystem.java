@@ -14,13 +14,13 @@ public class SolarSystem {
 
     public static void main(String[] args) {
 
-        //   ApplicationContext context = new AnnotationConfigApplicationContext("ru.solarsystem");
-        //   final ConsoleController consoleController = context.getBean(ConsoleController.class);
-
-        //   Planet obj = consoleController.findPlanetByName("Нептун");
+           ApplicationContext context = new AnnotationConfigApplicationContext("ru.solarsystem");
+           final ConsoleController consoleController = context.getBean(ConsoleController.class);
 
 
-        //   consoleController.printPlanetSatellite(obj);
+
+
+           consoleController.allPlanets();
 
 
 

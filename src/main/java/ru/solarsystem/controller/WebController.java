@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.solarsystem.data.SatelliteRepository;
-import ru.solarsystem.model.Planet;
 import ru.solarsystem.service.PlanetsService;
 
 
@@ -56,7 +54,7 @@ public class WebController {
         return "numrotation";
     }
 
-
+/*
     @PostMapping("/numrotation")
     public String numberRotation(@RequestParam("planet") int num, @RequestParam("days") int days, Model model) {
         addAllPlanetsInModel(model, planetsService);
@@ -103,5 +101,5 @@ public class WebController {
         model.addAttribute("planet_maxdistance", planetsService.getMaximumPlanetDistance(planetsService.findByIndex(planet1), planetsService.findByIndex(planet2)));
         return "planetdistance";
     }
-
+*/
 }

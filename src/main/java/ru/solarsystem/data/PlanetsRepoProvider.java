@@ -20,7 +20,7 @@ public class PlanetsRepoProvider implements PlanetsRepo {
     @Transactional(readOnly=true)
     @Override
     public List<Planet> findAll() {
-        return null;
+        return (List<Planet>) em.createQuery("select p from planets p");
     }
 
 

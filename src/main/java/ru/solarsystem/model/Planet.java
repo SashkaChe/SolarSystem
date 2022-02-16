@@ -35,6 +35,8 @@ public class Planet {
     @Column(name = "diameter")
     private int diameter;
 
+
+    @OneToMany(mappedBy = "planet", cascade=CascadeType.ALL, orphanRemoval=true)
     private List<Satellite> satellites;
 
 }
