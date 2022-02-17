@@ -1,6 +1,7 @@
 package ru.solarsystem.mvc_config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.*;
@@ -22,12 +23,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@Configuration
 @ComponentScan("ru.solarsystem")
 @EnableWebMvc
 @EnableJpaRepositories("ru.solarsystem.data")
 @EnableTransactionManagement(proxyTargetClass = true)
 @PropertySource("classpath:/prop.properties")
+@SpringBootApplication
 public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
@@ -39,10 +40,18 @@ public class SpringConfig implements WebMvcConfigurer {
 
 
     @Bean
-    @ConfigurationProperties(prefix = "bd.datasource")
+   // @ConfigurationProperties(prefix = "bd.datasource")
     @Primary
     public DataSource dataSource() {
-        return DataSourceBuilder.create().build();
+
+        //return DataSourceBuilder.create().build();
+        return DataSourceBuilder
+                .create()
+                .username("postgres")
+                .password("admin")
+                .url("jdbc:postgresql://localhost:5432/MyDb")
+                .driverClassName("org.postgresql.Driver")
+                .build();
     }
 
     @Bean
