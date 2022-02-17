@@ -2,13 +2,14 @@ package ru.solarsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.solarsystem.data.PlanetsRepoProvider;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
 
 import java.util.List;
 
-@Component
+@Service
 public class PlanetsService {
 
     private final PlanetsRepoProvider repository;

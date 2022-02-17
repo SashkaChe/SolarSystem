@@ -3,6 +3,7 @@ package ru.solarsystem.data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.solarsystem.model.Planet;
 
@@ -17,8 +18,8 @@ public class PlanetsRepoProvider implements PlanetsRepo {
     @Autowired
     private EntityManager em;
 
-    @Transactional(readOnly=true)
     @Override
+    @Transactional(readOnly=true)
     public List<Planet> findAll() {
         return (List<Planet>) em.createQuery("select p from planets p");
     }

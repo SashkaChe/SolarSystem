@@ -26,7 +26,7 @@ import java.util.Properties;
 @ComponentScan("ru.solarsystem")
 @EnableWebMvc
 @EnableJpaRepositories("ru.solarsystem.data")
-@EnableTransactionManagement
+@EnableTransactionManagement(proxyTargetClass = true)
 @PropertySource("classpath:/prop.properties")
 public class SpringConfig implements WebMvcConfigurer {
 
@@ -39,17 +39,30 @@ public class SpringConfig implements WebMvcConfigurer {
 
 
     @Bean
-    //@ConfigurationProperties(prefix = "bd.datasource")
+    @ConfigurationProperties(prefix = "bd.datasource")
     @Primary
     public DataSource dataSource() {
-       // return DataSourceBuilder.create().build();
-        return DataSourceBuilder.create().username("postgres").password("admin").url("jdbc:postgresql://localhost:5432/MyDb").driverClassName("org.postgresql.Driver").build();
+        return DataSourceBuilder.create().build();
     }
 
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new JpaTransactionManager(entityManagerFactory());
     }
+
+
+    private Properties hibernateProperties () {
+        Properties hibernateProp = new Properties();
+        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        hibernateProp.put("hibernate.format_sql", true);
+        hibernateProp.put("hibernate.use_sql_comments", true);
+        hibernateProp.put("hibernate.show_sql", true);
+        hibernateProp.put("hibernate.max_fetch_depth", 3);
+        hibernateProp.put("hibernate.jdbc.batch size", 10);
+        hibernateProp.put("hibernate.jdbc.fetch_size", 50);
+        return hibernateProp;
+    }
+
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
@@ -58,6 +71,7 @@ public class SpringConfig implements WebMvcConfigurer {
         factoryBean.setPackagesToScan("ru.solarsystem");
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        factoryBean.setJpaProperties(hibernateProperties());
         factoryBean.afterPropertiesSet();
         return factoryBean.getNativeEntityManagerFactory();
     }
