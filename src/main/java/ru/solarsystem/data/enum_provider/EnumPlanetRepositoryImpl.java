@@ -1,5 +1,6 @@
 package ru.solarsystem.data.enum_provider;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.solarsystem.data.PlanetRepository;
 import ru.solarsystem.model.Planet;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@Slf4j
 public class EnumPlanetRepositoryImpl implements PlanetRepository {
 
     private final List<Planet> allPlanets;
@@ -27,11 +29,13 @@ public class EnumPlanetRepositoryImpl implements PlanetRepository {
 
     @Override
     public Planet findByIndex(int index) {
+        log.info("entering EnumPlanetRepositoryImpl.findByIndex("+index);
         return allPlanets.get(index);
     }
 
     @Override
     public List<Planet> findAll() {
+        log.info("entering EnumPlanetRepositoryImpl.findAll");
         return allPlanets;
     }
 
