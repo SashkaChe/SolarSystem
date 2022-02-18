@@ -29,7 +29,7 @@ import java.util.Properties;
 @EnableJpaRepositories("ru.solarsystem.data")
 @EnableTransactionManagement(proxyTargetClass = true)
 @PropertySource("classpath:/prop.properties")
-@SpringBootApplication
+@Configuration
 public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
