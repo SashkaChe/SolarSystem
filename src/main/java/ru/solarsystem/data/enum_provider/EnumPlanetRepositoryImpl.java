@@ -7,6 +7,7 @@ import ru.solarsystem.model.Planet;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -31,6 +32,11 @@ public class EnumPlanetRepositoryImpl implements PlanetRepository {
     public Planet findByIndex(int index) {
         log.info("entering EnumPlanetRepositoryImpl.findByIndex("+index);
         return allPlanets.get(index);
+    }
+
+    @Override
+    public Optional<Planet> findById(Integer id) {
+        return Optional.of(findByIndex(id));
     }
 
     @Override
