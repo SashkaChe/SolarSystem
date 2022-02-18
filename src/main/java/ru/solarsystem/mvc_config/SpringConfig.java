@@ -24,12 +24,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@ComponentScan("ru.solarsystem")
 @EnableWebMvc
 @EnableJpaRepositories("ru.solarsystem.data")
 @EnableTransactionManagement(proxyTargetClass = true)
 @PropertySource("classpath:/prop.properties")
-@Configuration
+@SpringBootApplication(scanBasePackages="ru.solarsystem")
 public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
