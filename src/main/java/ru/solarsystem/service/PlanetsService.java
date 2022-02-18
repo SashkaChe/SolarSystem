@@ -2,6 +2,7 @@ package ru.solarsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.solarsystem.data.PlanetRepository;
 import ru.solarsystem.data.PlanetsRepo;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
@@ -12,10 +13,10 @@ import java.util.List;
 @Service
 public class PlanetsService {
 
-    private final PlanetsRepo repository;
+    private final PlanetRepository repository;
 
     @Autowired
-    public PlanetsService(PlanetsRepo repository) {
+    public PlanetsService(PlanetRepository repository) {
         this.repository = repository;
     }
 

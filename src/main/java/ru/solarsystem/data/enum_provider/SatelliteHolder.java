@@ -91,5 +91,4 @@ public enum SatelliteHolder {
             satellites.add(SatelliteHolder.Triton.satellite);
         return satellites;
         }
-
-        }
+}

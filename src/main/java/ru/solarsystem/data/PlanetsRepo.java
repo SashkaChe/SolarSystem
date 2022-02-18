@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import ru.solarsystem.model.Planet;
 
 public interface PlanetsRepo extends CrudRepository<Planet, Integer> {
+    Planet findByName(String name);
 }

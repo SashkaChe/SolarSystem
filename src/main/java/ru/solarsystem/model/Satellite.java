@@ -15,6 +15,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "satellites")
 public class Satellite {
 
+    public Satellite(String name) {
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
