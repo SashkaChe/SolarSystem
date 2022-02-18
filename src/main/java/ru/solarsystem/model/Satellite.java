@@ -26,6 +26,8 @@ public class Satellite {
     @ManyToOne
     @JoinColumn(name = "planetid")
     private Planet planet;
+
+
     }
 
 

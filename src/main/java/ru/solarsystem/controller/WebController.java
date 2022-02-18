@@ -20,8 +20,9 @@ public class WebController {
     }
 
     @GetMapping("/")
-    public String indexPage() {
-         return "index";
+    public String indexPage(Model model) {
+        addAllPlanetsInModel(model, planetsService);
+            return "index";
     }
 
     @GetMapping("/sundistance")

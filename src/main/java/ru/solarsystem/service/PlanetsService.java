@@ -1,27 +1,25 @@
 package ru.solarsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import ru.solarsystem.data.PlanetsRepoProvider;
+import ru.solarsystem.data.PlanetsRepo;
 import ru.solarsystem.model.Planet;
-import ru.solarsystem.model.Satellite;
 
 import java.util.List;
 
 @Service
 public class PlanetsService {
 
-    private final PlanetsRepoProvider repository;
+    private final PlanetsRepo repository;
 
     @Autowired
-    public PlanetsService(PlanetsRepoProvider repository) {
+    public PlanetsService(PlanetsRepo repository) {
         this.repository = repository;
     }
 
 
     public List<Planet> findAllPlanets() {
-        return repository.findAll();
+        return (List<Planet>) repository.findAll();
     }
 
 
