@@ -3,7 +3,6 @@ package ru.solarsystem.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.solarsystem.data.PlanetRepository;
-import ru.solarsystem.data.PlanetsRepo;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
 
