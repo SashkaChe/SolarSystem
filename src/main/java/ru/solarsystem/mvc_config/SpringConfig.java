@@ -33,6 +33,9 @@ public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
 
+    public static void main(String[] args) {
+        SpringApplication.run(SpringConfig.class, args);
+    }
 
     @Autowired
     public SpringConfig(ApplicationContext applicationContext) {
