@@ -20,9 +20,8 @@ public class WebController {
     }
 
     @GetMapping("/")
-    public String indexPage(Model model) {
-        addAllPlanetsInModel(model, planetsService);
-            return "index";
+    public String indexPage() {
+         return "index";
     }
 
     @GetMapping("/sundistance")
@@ -55,7 +54,7 @@ public class WebController {
         return "numrotation";
     }
 
-/*
+
     @PostMapping("/numrotation")
     public String numberRotation(@RequestParam("planet") int num, @RequestParam("days") int days, Model model) {
         addAllPlanetsInModel(model, planetsService);
@@ -102,5 +101,5 @@ public class WebController {
         model.addAttribute("planet_maxdistance", planetsService.getMaximumPlanetDistance(planetsService.findByIndex(planet1), planetsService.findByIndex(planet2)));
         return "planetdistance";
     }
-*/
+
 }
