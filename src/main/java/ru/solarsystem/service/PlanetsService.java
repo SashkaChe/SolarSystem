@@ -28,9 +28,6 @@ public class PlanetsService {
         return repository.getById(id);
     }
 
-
-
-
     public long getMinPlanetsDistance(Planet planet1, Planet planet2) {
         return Math.abs(planet1.getDistanceToSun() - planet2.getDistanceToSun());
     }
@@ -42,12 +39,6 @@ public class PlanetsService {
     public List<Satellite> getSatellites(Planet planet) {
         return planet.getSatellites();
     }
-
-
-  /*  public Planet findPlanetByName(String name) {
-        return repository.findByName(name);
-    }
-*/
 
 
     public double numberRotationPlanet(Planet planet, int days) {

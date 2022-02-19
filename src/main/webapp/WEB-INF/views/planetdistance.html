@@ -14,11 +14,11 @@
 
 <form method="post" action="/planetdistance">
     <select name="planet1">
-        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${currentPlanet.getId()}"></option>
     </select>
 
     <select name="planet2">
-        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${currentPlanet.getId()}"></option>
     </select>
 
     <input type="submit" value="OK">
