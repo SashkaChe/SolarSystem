@@ -14,7 +14,7 @@
 
 <form method="post" action="/numrotation">
     <select name="planet">
-        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${currentPlanet.getId()}"></option>
     </select>
 
     <input name="days" type="text" size="40">

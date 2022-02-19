@@ -14,8 +14,9 @@
 
 <form method="post" action="/satellites">
     <select name="planet">
-        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${allPlanets.indexOf(currentPlanet)}"></option>
+        <option th:each="currentPlanet : ${allPlanets}" th:text="${currentPlanet.getName()}" th:value="${currentPlanet.getId()}"></option>
     </select>
+
     <input type="submit" value="OK">
 </form>
 

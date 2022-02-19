@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.solarsystem.service.PlanetsService;
+import ru.solarsystem.service.SatellitesService;
 
 
 @Controller
@@ -14,6 +15,10 @@ public class WebController {
 
     @Autowired
     private PlanetsService planetsService;
+
+    @Autowired
+    private SatellitesService satellitesService;
+
 
     private static void addAllPlanetsInModel(Model model, PlanetsService planetsService) {
         model.addAttribute("allPlanets", planetsService.findAllPlanets());
@@ -59,10 +64,27 @@ public class WebController {
     public String numberRotation(@RequestParam("planet") int num, @RequestParam("days") int days, Model model) {
         addAllPlanetsInModel(model, planetsService);
         model.addAttribute("numberRotation", planetsService.numberRotationPlanet(planetsService.getById(num), days));
-        model.addAttribute("planetName", planetsService.findByIndex(num).getName());
+        model.addAttribute("planetName", planetsService.getById(num).getName());
         model.addAttribute("days", days);
         return "numrotation";
     }
+
+
+    @PostMapping("/satellites")
+    public String planetSatellites(@RequestParam("planet") int num, Model model) {
+        addAllPlanetsInModel(model, planetsService);
+        model.addAttribute("satelliteList", planetsService.getSatellites(planetsService.getById(num)));
+        model.addAttribute("planetName", planetsService.getById(num).getName());
+        return "satellites";
+    }
+
+    @PostMapping("/sundistance")
+    public String planetList(@RequestParam("planet") int num, Model model) {
+        addAllPlanetsInModel(model, planetsService);
+        model.addAttribute("planet", planetsService.getById(num));
+        return "sundistance";
+    }
+
 /*
 
     @PostMapping("/planetsize")
@@ -72,23 +94,6 @@ public class WebController {
         model.addAttribute("planetName2", planetsService.findByIndex(planet2).getName());
         model.addAttribute("compareSize", Math.ceil(planetsService.compareSizePlanets(planetsService.findByIndex(planet1), planetsService.findByIndex(planet2)) * Math.pow(10, 3)) / Math.pow(10, 3));
         return "planetsize";
-    }
-
-
-    @PostMapping("/satellites")
-    public String planetSatellites(@RequestParam("planet") int num, Model model) {
-        addAllPlanetsInModel(model, planetsService);
-        model.addAttribute("satelliteList", planetsService.getSatellites(planetsService.findByIndex(num)));
-        model.addAttribute("planetName", planetsService.findByIndex(num).getName());
-        return "satellites";
-    }
-
-
-    @PostMapping("/sundistance")
-    public String planetList(@RequestParam("planet") int num, Model model) {
-        addAllPlanetsInModel(model, planetsService);
-        model.addAttribute("planet", planetsService.findByIndex(num));
-        return "sundistance";
     }
 
 
