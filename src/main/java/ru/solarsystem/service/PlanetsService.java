@@ -23,5 +23,10 @@ public class PlanetsService {
     }
 
 
+    public Planet getById(int id) {
+        return repository.getById(id);
+    }
+
+
 
 }

@@ -20,9 +20,8 @@ public class WebController {
     }
 
     @GetMapping("/")
-    public String indexPage(Model model) {
-        addAllPlanetsInModel(model, planetsService);
-            return "index";
+    public String indexPage() {
+        return "index";
     }
 
     @GetMapping("/sundistance")
@@ -55,16 +54,16 @@ public class WebController {
         return "numrotation";
     }
 
-/*
+
     @PostMapping("/numrotation")
     public String numberRotation(@RequestParam("planet") int num, @RequestParam("days") int days, Model model) {
         addAllPlanetsInModel(model, planetsService);
-        model.addAttribute("numberRotation", planetsService.numberRotationPlanet(planetsService.findByIndex(num), days));
+        model.addAttribute("numberRotation", planetsService.numberRotationPlanet(planetsService.getById(num), days));
         model.addAttribute("planetName", planetsService.findByIndex(num).getName());
         model.addAttribute("days", days);
         return "numrotation";
     }
-
+/*
 
     @PostMapping("/planetsize")
     public String planetSize(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
