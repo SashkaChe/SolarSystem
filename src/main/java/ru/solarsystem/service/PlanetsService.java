@@ -32,11 +32,7 @@ public class PlanetsService {
     }
 
     public List<Planet> findAllPlanets() {
-        final Iterable<Planet> iterable = repository.findAll();
-
-        List<Planet> result = new ArrayList<>();
-        iterable.forEach(result::add);
-        return result;
+        return repository.findAll();
     }
 
 
