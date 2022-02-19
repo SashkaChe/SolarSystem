@@ -17,6 +17,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 public class Satellite {
 
+    public Satellite(String name) {
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
