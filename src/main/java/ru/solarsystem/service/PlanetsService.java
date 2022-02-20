@@ -3,19 +3,20 @@ package ru.solarsystem.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.solarsystem.data.PlanetRepository;
+import ru.solarsystem.data.PlanetsRepo;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlanetsService {
 
-    private final PlanetRepository repository;
+    private final PlanetsRepo repository;
 
     @Autowired
-    public PlanetsService(PlanetRepository repository) {
+    public PlanetsService(PlanetsRepo repository) {
         this.repository = repository;
     }
 
@@ -40,7 +41,7 @@ public class PlanetsService {
         return repository.findByName(name);
     }
 
-    public Planet findByIndex(int index) {return repository.findByIndex(index);
+    public Optional<Planet> findByIndex(int index) {return repository.findById(index);
     }
 
     public double numberRotationPlanet(Planet planet, int days) {
