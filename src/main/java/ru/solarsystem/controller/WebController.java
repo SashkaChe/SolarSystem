@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.solarsystem.service.PlanetsService;
-import ru.solarsystem.service.SatellitesService;
 
 
 @Controller
@@ -15,9 +14,6 @@ public class WebController {
 
     @Autowired
     private PlanetsService planetsService;
-
-    @Autowired
-    private SatellitesService satellitesService;
 
 
     private static void addAllPlanetsInModel(Model model, PlanetsService planetsService) {
