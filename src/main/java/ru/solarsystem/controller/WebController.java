@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.solarsystem.model.Planet;
 import ru.solarsystem.service.PlanetService;
 
 
@@ -58,9 +59,11 @@ public class WebController {
 
     @PostMapping("/numrotation")
     public String numberRotation(@RequestParam("planet") int num, @RequestParam("days") int days, Model model) {
+
+        Planet planet = planetService.findByIndex(num);
         addAllPlanetsInModel(model, planetService);
-        model.addAttribute("numberRotation", planetService.numberRotationPlanet(planetService.findByIndex(num).get(), days));
-        model.addAttribute("planetName", planetService.findByIndex(num).get().getName());
+        model.addAttribute("numberRotation", planetService.numberRotationPlanet(planet, days));
+        model.addAttribute("planetName", planet.getName());
         model.addAttribute("days", days);
         return "numrotation";
     }
@@ -68,9 +71,10 @@ public class WebController {
 
     @PostMapping("/satellites")
     public String planetSatellites(@RequestParam("planet") int num, Model model) {
+        Planet planet = planetService.findByIndex(num);
         addAllPlanetsInModel(model, planetService);
-        model.addAttribute("satelliteList", planetService.getSatellites(planetService.findByIndex(num).get()));
-        model.addAttribute("planetName", planetService.findByIndex(num).get().getName());
+        model.addAttribute("satelliteList", planetService.getSatellites(planet));
+        model.addAttribute("planetName", planet.getName());
         return "satellites";
     }
 
@@ -85,13 +89,17 @@ public class WebController {
 
     @PostMapping("/planetsize")
     public String planetSize(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
+
+        Planet planet_1 = planetService.findByIndex(planet1);
+        Planet planet_2 = planetService.findByIndex(planet2);
+
         addAllPlanetsInModel(model, planetService);
-        model.addAttribute("planetName1", planetService.findByIndex(planet1).get().getName());
-        model.addAttribute("planetName2", planetService.findByIndex(planet2).get().getName());
+        model.addAttribute("planetName1", planet_1.getName());
+        model.addAttribute("planetName2", planet_2.getName());
         model.addAttribute("compareSize",
                 Math.ceil(planetService.compareSizePlanets(
-                        planetService.findByIndex(planet1).get(),
-                        planetService.findByIndex(planet2).get())
+                        planet_1,
+                        planet_2)
                         * Math.pow(10, 3)) / Math.pow(10, 3));
         return "planetsize";
     }
@@ -99,13 +107,17 @@ public class WebController {
 
     @PostMapping("/planetdistance")
     public String planetList(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
+
+        Planet planet_1 = planetService.findByIndex(planet1);
+        Planet planet_2 = planetService.findByIndex(planet2);
+
         addAllPlanetsInModel(model, planetService);
-        model.addAttribute("planet_1", planetService.findByIndex(planet1).get().getName());
-        model.addAttribute("planet_2", planetService.findByIndex(planet2).get().getName());
+        model.addAttribute("planet_1", planet_1.getName());
+        model.addAttribute("planet_2", planet_2.getName());
         model.addAttribute("planet_mindistance",
-                planetService.getMinPlanetsDistance(planetService.findByIndex(planet1).get(), planetService.findByIndex(planet2).get()));
+                planetService.getMinPlanetsDistance(planet_1, planet_2));
         model.addAttribute("planet_maxdistance",
-                planetService.getMaximumPlanetDistance(planetService.findByIndex(planet1).get(), planetService.findByIndex(planet2).get()));
+                planetService.getMaximumPlanetDistance(planet_1, planet_2));
         return "planetdistance";
     }
 
