@@ -35,32 +35,29 @@ public class PlanetRestController {
     @GetMapping("/planet_distance_min")
     public long minPlanetDistance(@RequestParam int firstPlanetId,
                                   @RequestParam int secondPlanetId) {
-        // TODO implement
-        return -1;
+        final Planet firstPlanet = planetService.findByIndex(firstPlanetId);
+        final Planet secondPlanet = planetService.findByIndex(secondPlanetId);
+        return planetService.getMinPlanetsDistance(firstPlanet, secondPlanet);
     }
 
-    @GetMapping("//planet/{id}/sun_distance")
-    public long distanceToSun(@RequestParam int planetId) {
-        // TODO implement
-        return -1;
+    @GetMapping("/planet/{id}/sun_distance")
+    public long distanceToSun(@PathVariable int planetId) {
+          return planetService.findByIndex(planetId).getDistanceToSun();
     }
 
     @GetMapping("/planet/{id}/satellites")
     public List<Satellite> getSatellites(@PathVariable int id) {
-        // TODO implement
-        return null;
+         return planetService.findByIndex(id).getSatellites();
     }
 
     @GetMapping("/planet/{id}/size")
     public int getPlanetSize(@PathVariable int id) {
-        // TODO implement
-        return -1;
+        return planetService.findByIndex(id).getDiameter();
     }
 
     @GetMapping("/planet/{id}/numrotation")
-    public int getNumRoration(@PathVariable int id) {
-        // TODO implement
-        return -1;
+    public double getNumRoration(@PathVariable int id, @RequestParam int days) {
+        return planetService.numberRotationPlanet(planetService.findByIndex(id), days);
     }
 
 
