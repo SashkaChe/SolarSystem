@@ -40,7 +40,7 @@ public class PlanetService {
         return repository.findByName(name);
     }
 
-    public Planet findByIndex(int index) {return repository.findById(index).get();
+    public Planet findByIndex(int index) {return repository.findById(index).orElse(null);
     }
 
     public double numberRotationPlanet(Planet planet, int days) {

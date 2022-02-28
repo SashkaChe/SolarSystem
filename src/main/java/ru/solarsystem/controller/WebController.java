@@ -88,36 +88,36 @@ public class WebController {
 
 
     @PostMapping("/planetsize")
-    public String planetSize(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
+    public String planetSize(@RequestParam("planet1") int planetId1, @RequestParam("planet2") int planetId2, Model model) {
 
-        Planet planet_1 = planetService.findByIndex(planet1);
-        Planet planet_2 = planetService.findByIndex(planet2);
+        Planet planetFirst = planetService.findByIndex(planetId1);
+        Planet planetSecond = planetService.findByIndex(planetId2);
 
         addAllPlanetsInModel(model, planetService);
-        model.addAttribute("planetName1", planet_1.getName());
-        model.addAttribute("planetName2", planet_2.getName());
+        model.addAttribute("planetName1", planetFirst.getName());
+        model.addAttribute("planetName2", planetSecond.getName());
         model.addAttribute("compareSize",
                 Math.ceil(planetService.compareSizePlanets(
-                        planet_1,
-                        planet_2)
+                        planetFirst,
+                        planetSecond)
                         * Math.pow(10, 3)) / Math.pow(10, 3));
         return "planetsize";
     }
 
 
     @PostMapping("/planetdistance")
-    public String planetList(@RequestParam("planet1") int planet1, @RequestParam("planet2") int planet2, Model model) {
+    public String planetList(@RequestParam("planet1") int planetId1, @RequestParam("planet2") int planetId2, Model model) {
 
-        Planet planet_1 = planetService.findByIndex(planet1);
-        Planet planet_2 = planetService.findByIndex(planet2);
+        Planet planetFirst = planetService.findByIndex(planetId1);
+        Planet planetSecond = planetService.findByIndex(planetId2);
 
         addAllPlanetsInModel(model, planetService);
-        model.addAttribute("planet_1", planet_1.getName());
-        model.addAttribute("planet_2", planet_2.getName());
+        model.addAttribute("planet_1", planetFirst.getName());
+        model.addAttribute("planet_2", planetSecond.getName());
         model.addAttribute("planet_mindistance",
-                planetService.getMinPlanetsDistance(planet_1, planet_2));
+                planetService.getMinPlanetsDistance(planetFirst, planetSecond));
         model.addAttribute("planet_maxdistance",
-                planetService.getMaximumPlanetDistance(planet_1, planet_2));
+                planetService.getMaximumPlanetDistance(planetFirst, planetSecond));
         return "planetdistance";
     }
 
