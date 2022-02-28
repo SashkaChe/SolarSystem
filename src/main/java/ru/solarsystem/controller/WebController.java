@@ -112,8 +112,8 @@ public class WebController {
         Planet planetSecond = planetService.findByIndex(planetId2);
 
         addAllPlanetsInModel(model, planetService);
-        model.addAttribute("planet_1", planetFirst.getName());
-        model.addAttribute("planet_2", planetSecond.getName());
+        model.addAttribute("planetId1", planetFirst.getName());
+        model.addAttribute("planetId2", planetSecond.getName());
         model.addAttribute("planet_mindistance",
                 planetService.getMinPlanetsDistance(planetFirst, planetSecond));
         model.addAttribute("planet_maxdistance",
