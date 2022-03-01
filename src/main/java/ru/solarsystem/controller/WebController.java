@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.service.PlanetService;
 
+import java.text.DecimalFormat;
+
 
 @Controller
 public class WebController {
@@ -96,11 +98,8 @@ public class WebController {
         addAllPlanetsInModel(model, planetService);
         model.addAttribute("planetName1", planetFirst.getName());
         model.addAttribute("planetName2", planetSecond.getName());
-        model.addAttribute("compareSize",
-                Math.ceil(planetService.compareSizePlanets(
-                        planetFirst,
-                        planetSecond)
-                        * Math.pow(10, 3)) / Math.pow(10, 3));
+        model.addAttribute("compareSize", new DecimalFormat("###.###").format(planetService.compareSizePlanets(planetFirst, planetSecond)));
+
         return "planetsize";
     }
 
