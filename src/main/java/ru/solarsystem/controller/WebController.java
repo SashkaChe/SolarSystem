@@ -98,7 +98,8 @@ public class WebController {
         addAllPlanetsInModel(model, planetService);
         model.addAttribute("planetName1", planetFirst.getName());
         model.addAttribute("planetName2", planetSecond.getName());
-        model.addAttribute("compareSize", new DecimalFormat("###.###").format(planetService.compareSizePlanets(planetFirst, planetSecond)));
+        final double result = planetService.compareSizePlanets(planetFirst, planetSecond);
+        model.addAttribute("compareSize", new DecimalFormat("###.###").format(result));
 
         return "planetsize";
     }
