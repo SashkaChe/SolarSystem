@@ -6,22 +6,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.solarsystem.model.Planet;
 import ru.solarsystem.model.Satellite;
-import ru.solarsystem.service.PlanetsService;
+import ru.solarsystem.service.PlanetService;
 
 import java.util.List;
 
 @RestController("/rest")
 public class PlanetRestController {
 
-    private final PlanetsService planetService;
+    private final PlanetService planetService;
 
-    public PlanetRestController(PlanetsService planetService) {
+    public PlanetRestController(PlanetService planetService) {
         this.planetService = planetService;
     }
 
     @GetMapping("/planetList")
     public List<Planet> listPlanets() {
-        return planetService.allPlanets();
+        return planetService.findAllPlanets();
     }
 
     @GetMapping("/planet_distance_max")
