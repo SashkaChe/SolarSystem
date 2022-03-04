@@ -1,14 +1,25 @@
 package ru.solarsystem.service;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import ru.solarsystem.model.Planet;
+import ru.solarsystem.mvc_config.SpringConfig;
 
 import static org.junit.Assert.*;
 
+@SpringBootTest(classes = SpringConfig.class)
+@RunWith(SpringRunner.class)
 public class PlanetServiceTest {
 
-    // не использует Спринг, не знает про бины
-    private final PlanetService service = new PlanetService(null);
+    @Autowired
+    private PlanetService service;
+
+    public void setService(PlanetService service) {
+        this.service = service;
+    }
 
     @Test
     public void minimumPlanetDistance() {
@@ -41,9 +52,7 @@ public class PlanetServiceTest {
         assertEquals(1, service.numberRotationPlanet(shortPeriod, 12), DELTA);
     }
 
-    /* don't work since we created service without any repository
-        Probably this test should be removed. Another option is to use Spring test
-     */
+    @Test
     public void findPlanet() {
         final String name = "Земля";
         final Planet actual = service.findPlanetByName(name);
